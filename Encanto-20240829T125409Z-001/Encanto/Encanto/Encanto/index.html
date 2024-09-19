@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História Mágica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .step {
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            background-color: #2b90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #7a1f9b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aventura na Floresta Encantada</h1>
+
+    <div id="story-container">
+        <div class="step" id="step-1">
+            <p><strong>Passo 1:</strong> Você está na floresta encantada e encontra um duende perdido.</p>
+            <a href="#step-2" class="button">Ajuda o duende</a>
+            <a href="#step-3" class="button">Ignora e continua caminhando</a>
+        </div>
+
+        <div class="step" id="step-2" style="display:none;">
+            <p><strong>Passo 2:</strong> O duende oferece um feitiço mágico.</p>
+            <a href="#step-4" class="button">Aceita o feitiço</a>
+            <a href="#step-5" class="button">Recusa e pede um mapa</a>
+        </div>
+
+        <div class="step" id="step-3" style="display:none;">
+            <p><strong>Passo 3:</strong> Você continua sua jornada, mas sente que perdeu uma oportunidade.</p>
+            <a href="#step-1" class="button">Voltar e ajudar o duende</a>
+            <a href="#step-5" class="button">Explorar a floresta sozinha</a>
+        </div>
+
+        <div class="step" id="step-4" style="display:none;">
+            <p><strong>Passo 4:</strong> Com o feitiço, você se transforma em uma fada.</p>
+            <a href="#step-6" class="button">Investiga o que está sumindo</a>
+            <a href="#step-7" class="button">Foge para a segurança de casa</a>
+        </div>
+
+        <div class="step" id="step-5" style="display:none;">
+            <p><strong>Passo 5:</strong> Você encontra uma fada que pode ajudar.</p>
+            <a href="#step-8" class="button">Faz amizade com a fada</a>
+            <a href="#step-9" class="button">Desconfia da fada</a>
+        </div>
+
+        <div class="step" id="step-6" style="display:none;">
+            <p><strong>Passo 6:</strong> Um ser sombrio aparece, ameaçando a floresta.</p>
+            <a href="#step-10" class="button">Enfrenta o ser sombrio</a>
+            <a href="#step-11" class="button">Tenta negociar com ele</a>
+        </div>
+
+        <div class="step" id="step-7" style="display:none;">
+            <p><strong>Passo 7:</strong> Você descobre que o ser sombrio tem um passado triste.</p>
+            <a href="#step-12" class="button">Tenta ajudar o ser sombrio</a>
+            <a href="#step-13" class="button">Decide derrotá-lo de vez</a>
+        </div>
+
+        <div class="step" id="step-8" style="display:none;">
+            <p><strong>Passo 8:</strong> Você ganha um poder especial da fada.</p>
+            <a href="#step-14" class="button">Usa o poder imediatamente</a>
+            <a href="#step-15" class="button">Guarda o poder para momentos difíceis</a>
+        </div>
+
+        <div class="step" id="step-9" style="display:none;">
+            <p><strong>Passo 9:</strong> A fada sugere uma jornada a um templo mágico.</p>
+            <a href="#step-16" class="button">Aceita ir ao templo</a>
+            <a href="#step-17" class="button">Decide explorar a floresta primeiro</a>
+        </div>
+
+        <div class="step" id="step-10" style="display:none;">
+            <p><strong>Passo 10:</strong> No templo, há um artefato mágico.</p>
+            <a href="#step-18" class="button">Toca o artefato</a>
+            <a href="#step-19" class="button">Estuda o artefato de longe</a>
+        </div>
+
+        <div class="step" id="step-11" style="display:none;">
+            <p><strong>Passo 11:</strong> Tocar o artefato desperta um guardião.</p>
+            <a href="#step-20" class="button">Luta contra o guardião</a>
+            <a href="#step-21" class="button">Tenta conversar com o guardião</a>
+        </div>
+
+        <div class="step" id="step-12" style="display:none;">
+            <p><strong>Passo 12:</strong> Você deve decidir o destino da floresta.</p>
+            <a href="#step-22" class="button">Protege a floresta</a>
+            <a href="#step-23" class="button">Atraí visitantes para a magia</a>
+        </div>
+
+        <div class="step" id="step-13" style="display:none;">
+            <p><strong>Passo 13:</strong> Sua escolha muda a magia da floresta para sempre.</p>
+            <a href="#end-1" class="button">Você se torna o novo guardião</a>
+            <a href="#end-2" class="button">Você volta à sua vida anterior, mas com memórias mágicas</a>
+        </div>
+
+        <div class="step" id="end-1" style="display:none;">
+            <p><strong>Fim:</strong> Você se tornou o guardião da floresta encantada, protegendo sua magia para sempre.</p>
+        </div>
+
+        <div class="step" id="end-2" style="display:none;">
+            <p><strong>Fim:</strong> Você voltou para sua vida normal, mas sempre lembrará da magia que viveu na floresta.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', function() {
+                const currentStep = this.parentElement.id;
+                const nextStep = this.getAttribute('href').substring(1);
+                
+                document.getElementById(currentStep).style.display = 'none';
+                document.getElementById(nextStep).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
